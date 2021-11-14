@@ -1,39 +1,52 @@
 <template>
-  <div class="hero is-white is-fullheight">
-    <nav class="navbar is-fixed is-white is-active" ref="navbar" role="navigation" aria-label="main navigation">
+  <div>
+    <nav class="navbar is-fixed is-white" ref="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <div>
           <a href="/">
-            <img class="navbar-item" src="../../assets/animations/re-earth-site.gif" style="width: 150px; padding: 0.85rem"/>
+            <img class="navbar-item" src="../../public/logo.svg" width="100" height="20"/>
           </a>
         </div>
       </div>
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-menu is-active">
+        <div class="navbar-start">
+          <a class="navbar-item" @click="openContentPage()">
+            Home
+          </a>
+          <a class="navbar-item" @click="openMerchPage()">
+            Merch
+          </a>
+        </div>
         <div class="navbar-end">
           <a class="navbar-item">
             <button class="button" @click="volumeChange()">
-							<span class="icon is-small">
-								<i :class="button"></i>
-							</span>
-						</button>
+              <span class="icon is-small">
+                <i :class="button"></i>
+              </span>
+            </button>
           </a>
         </div>
       </div>
     </nav>
-		<Content></Content>
+    <div class="hero is-white is-fullheight">
+      <Merch v-if="showMerchPage"></Merch>
+      <Content v-if="showContentPage"></Content>
+    </div>
   </div>
 </template>
 
 <script>
 import Lottie from '@/components/Lottie.vue'
 import Content from '@/components/Content.vue'
+import Merch from '@/components/Merch.vue'
 import * as animationData from '../../assets/animations/data.json'
 
 export default {
   name: 'BasePage',
   components: {
     Lottie,
-		Content
+		Content,
+    Merch,
   },
   data() {
     return {
@@ -44,21 +57,25 @@ export default {
         renderer: 'svg'
       },
       animationSpeed: 1,
-      imgfile: '../../assets/re-earth_logo_H_blanc_1.png',
 			button:'fas fa-volume-mute',
+    }
+  },
+  computed: {
+    showContentPage() {
+      return this.$store.state.openContentPage
+    },
+    showMerchPage() {
+      return this.$store.state.openMerchPage
     }
   },
   methods: {
 		openContentPage () {
-			this.$store.state.openHomePage = false
+			this.$store.state.openMerchPage = false
 			this.$store.state.openContentPage = true
 		},
-		openHomePage () {
-			this.$store.state.openHomePage = true
+		openMerchPage () {
+			this.$store.state.openMerchPage = true
 			this.$store.state.openContentPage = false
-		},
-		show () {
-			return this.$store.state.openHomePage
 		},
 		volumeChange () {
 			this.button = ((this.button === 'fas fa-volume-mute') ? 'fas fa-volume-up' : 'fas fa-volume-mute')

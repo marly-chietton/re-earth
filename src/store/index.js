@@ -6,8 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
 		generalVolumeMute: true,
-		openContentPage: true,
-		openHomePage: false,
+		openContentPage: false,
+		openMerchPage: true,
     autoPlayAll: false,
 		cards: {
 			0: {
@@ -55,6 +55,12 @@ export default new Vuex.Store({
 				path: "animations/02-2020 animation (florian).mp4",
 				type: "video",
 			},
-		}
+		},
+    merchs: {
+      1: {
+        title: "local dj",
+        path: "./assets/re-earth_logo_H_blanc_1.png",
+      }
+    }
 	}
 });
