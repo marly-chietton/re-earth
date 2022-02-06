@@ -8,6 +8,7 @@ export default new Vuex.Store({
 		generalVolumeMute: true,
 		openContentPage: false,
 		openMerchPage: true,
+		openStreamPage: false,
     autoPlayAll: false,
 		cards: {
 			0: {
@@ -59,7 +60,7 @@ export default new Vuex.Store({
     merchs: {
       1: {
         title: "local dj",
-        path: "./assets/re-earth_logo_H_blanc_1.png",
+        path: "./assets/R001.png",
       }
     }
 	}

@@ -1,18 +1,16 @@
 <template>
   <div class="zoom">
     <div class="box">
-      <article class="media">
-        <div class="media-left">
-          <figure class="image is-128x128">
-            <img class="image" src="../../assets/RE001.png">
-          </figure>
+      <div class="columns" style="height: 100%;">
+        <div class="column" style="flex: 0 1 auto">
+            <img class="image" src="../../assets/R001.png">
         </div>
-        <div class="media-content">
+        <div class="column">
           <div class="content">
             <p>
-              <strong>local dj</strong> - <i>it's a disaster</i> - RE001
+              <strong>local dj</strong> - <i>it's a disaster</i> - RE001 - 12€
               <br>
-              Released in 2022, local dj allows us to...
+              Released in may 2022, local dj allows us to...
             </p>
           </div>
           <nav class="level is-mobile">
@@ -35,7 +33,7 @@
             </div>
           </nav>
         </div>
-      </article>
+      </div>
     </div>
   </div>
 </template>
@@ -68,7 +66,7 @@ export default {
 }
 
 .zoom:hover {
-  transform: scale(1.1)
+  transform: scale(1.01)
 }
 </style>
 
