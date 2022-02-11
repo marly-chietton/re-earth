@@ -1,10 +1,10 @@
 <template>
   <div>
-    <nav class="navbar is-fixed is-white" ref="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-fixed" ref="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <div>
           <a href="/">
-            <img class="navbar-item" src="../../public/logo.svg" width="100" height="70"/>
+            <img class="navbar-item" src="../../public/logo-white.svg" width="100" height="70"/>
           </a>
         </div>
       </div>
@@ -36,7 +36,7 @@
         </div>
       </div>
     </nav>
-    <div class="hero is-white is-fullheight">
+    <div class="hero is-primary is-fullheight">
       <Merch v-if="showMerchPage"></Merch>
       <Content v-if="showContentPage"></Content>
       <Stream v-if="showStreamPage"></Stream>
@@ -49,7 +49,8 @@ import Lottie from '@/components/Lottie.vue'
 import Content from '@/components/Content.vue'
 import Merch from '@/components/Merch.vue'
 import Stream from '@/components/Stream.vue'
-import * as animationData from '../../assets/animations/data.json'
+import * as animationData from '../../assets/animations/data.json';
+
 
 export default {
   name: 'BasePage',

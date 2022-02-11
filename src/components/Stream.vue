@@ -2,15 +2,19 @@
   <div v-show="show()">
     <div class="section">
       <div class="container">
-        <div class="columns" style="height: 100%;">
-          <div class="column" style="flex: 0 1 auto">
-            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/YSsm_PeWYPQ" title="RE:EARTH SHOW" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-            </iframe>
-          </div>
-          <div class="column">
-            <div class="content">
-            <h2>RE:EARTH SHOW 6/03/2022</h2>
-              <p>4h of mix with Serious A, Bernadette and local DJ.</p>
+        <div class="zoom">
+          <div class="box">
+            <div class="columns" style="height: 100%;">
+              <div class="column" style="flex: 0 1 auto">
+                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/YSsm_PeWYPQ" title="RE:EARTH SHOW" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+              </div>
+              <div class="column">
+                <div class="content">
+                <h2>RE:EARTH SHOW 6/03/2022</h2>
+                  <p>4h of mix with Serious A, Bernadette and local DJ.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -49,5 +53,9 @@ export default {
   right: 0;
   width: 100%;
   height: 100%;
+}
+
+.box {
+  background-color: purple;
 }
 </style

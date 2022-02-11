@@ -11,9 +11,11 @@ export default {
 </script>
 
 <style>
-@import '../node_modules/bulma/css/bulma.css';
 @import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
-
+/* Order is important */
+@import '../node_modules/bulma/css/bulma.css';
+/* Order is important */
+@import '../css/mystyles.css';
 
 $white: #ff8606;
 $white-invert: findColorInvert($white);

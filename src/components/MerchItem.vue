@@ -60,7 +60,6 @@ export default {
 }
 </script>
 <style>
-@import "../../node_modules/bulma/bulma.sass";
 .zoom {
   transition: transform .2s
 }
