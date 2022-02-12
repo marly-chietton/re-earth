@@ -8,14 +8,14 @@
         <div class="column">
           <div class="content">
             <p>
-              <strong>local dj</strong> - <i>it's a disaster</i> - RE001 - 12€
+              <strong style="color:white;"> local dj </strong> - <i>it's a disaster</i> - RE001 - 12€
               <br>
               TBA
             </p>
           </div>
           <nav class="level is-mobile">
             <div class="level-left">
-              <a class="level-item" aria-label="retweet" href="https://re-earthrecords.bandcamp.com/" target="_blank">
+              <a class="level-item" aria-label="retweet" href="https://re-earthrecords.bandcamp.com/" target="_blank" style="color:white;">
                 <span class="icon is-small">
                   <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                 </span>
@@ -27,6 +27,8 @@
               </a>
             </div>
           </nav>
+          <!-- uncomment when released -->
+          <!--<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1214520484%3Fsecret_token%3Ds-4tyhzLuHSTZ&color=%23556966&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>-->
         </div>
       </div>
     </div>
@@ -61,6 +63,13 @@ export default {
 
 .zoom:hover {
   transform: scale(1.01)
+}
+a {
+  color: white;
+}
+
+a:hover {
+  color: red;
 }
 </style>
 

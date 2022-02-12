@@ -1,6 +1,7 @@
 <template>
   <div>
-    <nav class="navbar is-fixed" ref="navbar" role="navigation" aria-label="main navigation">
+    <section class="hero is-fullheight">
+    <nav class="navbar" ref="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <div>
           <a href="/">
@@ -14,9 +15,12 @@
         <span aria-hidden="true"></span>
       </a>
       <div :class="isActive('burger') ? 'navbar-menu is-active' : 'navbar-menu'">
-        <div class="navbar-start">
-          <a class="navbar-item" @click="openContentPage()">
+        <div class="navbar-start has-text-white">
+          <a class="navbar-item" @click="openHomePage()">
             Home
+          </a>
+          <a class="navbar-item" @click="openContentPage()">
+            Media
           </a>
           <a class="navbar-item" @click="openStreamPage()">
             Stream
@@ -36,16 +40,19 @@
         </div>
       </div>
     </nav>
-    <div class="hero is-primary is-fullheight">
-      <Merch v-if="showMerchPage"></Merch>
-      <Content v-if="showContentPage"></Content>
-      <Stream v-if="showStreamPage"></Stream>
-    </div>
+      <div class="container is-fluid flex-direction">
+        <Home v-show="showHomePage()"></Home>
+        <Content v-show="showContentPage()"></Content>
+        <Stream v-show="showStreamPage()"></Stream>
+        <Merch v-show="showMerchPage()"></Merch>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 import Lottie from '@/components/Lottie.vue'
+import Home from '@/components/Home.vue'
 import Content from '@/components/Content.vue'
 import Merch from '@/components/Merch.vue'
 import Stream from '@/components/Stream.vue'
@@ -59,6 +66,7 @@ export default {
 		Content,
     Merch,
     Stream,
+    Home,
   },
   data() {
     return {
@@ -73,7 +81,7 @@ export default {
 			button:'fas fa-volume-mute',
     }
   },
-  computed: {
+  methods: {
     showContentPage() {
       return this.$store.state.openContentPage
     },
@@ -82,23 +90,33 @@ export default {
     },
     showStreamPage() {
       return this.$store.state.openStreamPage
-    }
-  },
-  methods: {
+    },
+    showHomePage() {
+      return this.$store.state.openHomePage
+    },
 		openContentPage () {
 			this.$store.state.openMerchPage = false
-			this.$store.state.openContentPage = true
 			this.$store.state.openStreamPage = false
+			this.$store.state.openHomePage = false
+			this.$store.state.openContentPage = true
 		},
 		openMerchPage () {
-			this.$store.state.openMerchPage = true
 			this.$store.state.openContentPage = false
 			this.$store.state.openStreamPage = false
+			this.$store.state.openHomePage = false
+			this.$store.state.openMerchPage = true
 		},
     openStreamPage () {
 			this.$store.state.openMerchPage = false
 			this.$store.state.openContentPage = false
+			this.$store.state.openHomePage = false
 			this.$store.state.openStreamPage = true
+    },
+    openHomePage () {
+			this.$store.state.openMerchPage = false
+			this.$store.state.openContentPage = false
+			this.$store.state.openStreamPage = false
+			this.$store.state.openHomePage = true
     },
 		volumeChange () {
 			this.button = ((this.button === 'fas fa-volume-mute') ? 'fas fa-volume-up' : 'fas fa-volume-mute')
@@ -119,7 +137,7 @@ export default {
 
 <style>
 .hero {
- background: white
+ background: #BCD9DA;
 } 
 </style>
 

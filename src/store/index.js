@@ -7,8 +7,9 @@ export default new Vuex.Store({
 	state: {
 		generalVolumeMute: true,
 		openContentPage: false,
-		openMerchPage: true,
+		openMerchPage: false,
 		openStreamPage: false,
+		openHomePage: true,
     autoPlayAll: false,
 		cards: {
 			0: {

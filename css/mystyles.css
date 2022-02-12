@@ -768,7 +768,7 @@ a.navbar-item,
   .navbar-link:hover,
   .navbar-link.is-active {
     background-color: #BCD9DA;
-    color: #A7C0CF; }
+    color: #a7c0cf; }
 
 .navbar-item {
   flex-grow: 0;
@@ -1509,7 +1509,7 @@ a.navbar-item,
   padding: 3rem 1.5rem; }
 
 .box {
-  background-color: #A7C0CF;
+  background-color: #a7c0cf;
   border-radius: 6px;
   box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
   color: #FFFFFF;
