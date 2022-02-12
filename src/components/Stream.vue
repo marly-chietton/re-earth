@@ -11,8 +11,9 @@
               </div>
               <div class="column">
                 <div class="content">
-                <h2>RE:EARTH SHOW 6/03/2022</h2>
-                  <p>4h of mix with Serious A, Bernadette and local DJ.</p>
+                <h2>RE:EARTH SHOW</h2>
+                  <p><i>date: TBA</i></p>
+                  <p>4h of mix with some friends...</p>
                 </div>
               </div>
             </div>

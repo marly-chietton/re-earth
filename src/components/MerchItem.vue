@@ -10,22 +10,17 @@
             <p>
               <strong>local dj</strong> - <i>it's a disaster</i> - RE001 - 12€
               <br>
-              Released in may 2022, local dj allows us to...
+              TBA
             </p>
           </div>
           <nav class="level is-mobile">
             <div class="level-left">
-              <a class="level-item" aria-label="reply">
-                <span class="icon is-small">
-                  <i class="fas fa-reply" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="level-item" aria-label="retweet">
+              <a class="level-item" aria-label="retweet" href="https://re-earthrecords.bandcamp.com/" target="_blank">
                 <span class="icon is-small">
                   <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                 </span>
               </a>
-              <a class="level-item" aria-label="like">
+              <a class="level-item" aria-label="like" href="https://soundcloud.com/re-earth" target="_blank">
                 <span class="icon is-small">
                   <i class="fas fa-heart" aria-hidden="true"></i>
                 </span>
