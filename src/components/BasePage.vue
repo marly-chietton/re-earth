@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="hero is-fullheight">
+    <div class="hero is-fullheight">
     <nav class="navbar" ref="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <div>
@@ -46,7 +46,7 @@
         <Stream v-show="showStreamPage()"></Stream>
         <Merch v-show="showMerchPage()"></Merch>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
@@ -135,9 +135,13 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .hero {
  background: #BCD9DA;
 } 
+
+.body{
+   background: #BCD9DA;
+}
 </style>
 
