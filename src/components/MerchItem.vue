@@ -15,20 +15,19 @@
           </div>
           <nav class="level is-mobile">
             <div class="level-left">
-              <a class="level-item" aria-label="retweet" href="https://re-earthrecords.bandcamp.com/" target="_blank" style="color:white;">
+              <a class="level-item" aria-label="retweet" href="https://re-earthrecords.bandcamp.com/" target="_blank" v-bind:style="styleCartIcon">
                 <span class="icon is-small">
                   <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                 </span>
               </a>
-              <a class="level-item" aria-label="like" href="https://soundcloud.com/re-earth" target="_blank">
+              <a class="level-item" aria-label="like" href="https://soundcloud.com/re-earth" target="_blank" v-bind:style="styleHeartIcon">
                 <span class="icon is-small">
                   <i class="fas fa-heart" aria-hidden="true"></i>
                 </span>
               </a>
             </div>
           </nav>
-          <!-- uncomment when released -->
-          <!--<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1214520484%3Fsecret_token%3Ds-4tyhzLuHSTZ&color=%23556966&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>-->
+          <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1214520484%3Fsecret_token%3Ds-4tyhzLuHSTZ&color=%23556966&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
         </div>
       </div>
     </div>
@@ -41,10 +40,24 @@ export default {
 	props: ["merch"],
 	data() {
 		return {
-			muted: true
+			muted: true,
+      activeColor: 'white',
+      hoverColor: 'red'
 		}	
 	},
 	computed: {
+    styleCartIcon: function() {
+      return {
+        '--color': 'white',
+        '--color-hover': 'orange'
+      }
+    },
+    styleHeartIcon: function() {
+      return {
+        '--color': 'white',
+        '--color-hover': 'red'
+      }
+    },
 		merchs() {
 			return this.$store.state.merchs
 		},
@@ -65,11 +78,11 @@ export default {
   transform: scale(1.01)
 }
 a {
-  color: white;
+  color: var(--color);
 }
 
 a:hover {
-  color: red;
+  color: var(--color-hover);
 }
 </style>
 
