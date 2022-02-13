@@ -14,7 +14,7 @@
                 </p>
               </div>
               <div class="column" style="flex: 0 1 auto">
-                <img class="image" style="height: 400px;" src="../../assets/white-transparency.png">
+                <img class="image" style="width: 400px;" src="../../assets/white-transparency.png">
               </div>
             </div>
           </div>
