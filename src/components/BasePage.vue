@@ -140,7 +140,7 @@ export default {
  background: #BCD9DA;
 } 
 
-.body{
+.body {
    background: #BCD9DA;
 }
 </style>

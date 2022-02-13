@@ -17,8 +17,4 @@ export default {
 /* Order is important */
 @import '../css/mystyles.css';
 
-$white: #ff8606;
-$white-invert: findColorInvert($white);
-$custom-colors: ("white": ($white, $white-invert));
-
 </style>
