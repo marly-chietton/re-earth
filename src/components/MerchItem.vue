@@ -8,7 +8,7 @@
         <div class="column">
           <div class="content">
             <p>
-              <strong style="color:white;"> local dj </strong> - <i>it's a disaster</i> - RE001 - 12€
+              <strong style="color:white;"> local dj </strong> - <i>it's a disaster</i> - R001 - 12.5 €
               <br>
               TBA
             </p>
@@ -20,9 +20,21 @@
                   <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                 </span>
               </a>
+              <a class="level-item" aria-label="vinyl" href="https://www.one-eye-witness.com/release/1649839761/Local-DJ-It's-A-Disaster-EP" target="_blank" v-bind:style="styleVinylIcon">
+                <span class="icon is-small">
+                  <i class="fas fa-compact-disc" aria-hidden="true"></i>
+                </span>
+              </a>
               <a class="level-item" aria-label="like" href="https://soundcloud.com/re-earth" target="_blank" v-bind:style="styleHeartIcon">
                 <span class="icon is-small">
                   <i class="fas fa-heart" aria-hidden="true"></i>
+                </span>
+              </a>
+            </div>
+            <div class="level-right">
+              <a class="level-item" aria-label="download" @click="openSecretDownloadForm" v-bind:style="styleDownloadIcon">
+                <span class="icon is-small">
+                  <i class="fas fa-download" aria-hidden="true"></i>
                 </span>
               </a>
             </div>
@@ -52,10 +64,22 @@ export default {
         '--color-hover': 'orange'
       }
     },
+    styleVinylIcon: function() {
+      return {
+        '--color': 'white',
+        '--color-hover': 'green'
+      }
+    },
     styleHeartIcon: function() {
       return {
         '--color': 'white',
         '--color-hover': 'red'
+      }
+    },
+    styleDownloadIcon: function() {
+      return {
+        '--color': 'white',
+        '--color-hover': 'grey'
       }
     },
 		merchs() {
@@ -66,6 +90,9 @@ export default {
 		getImg(path) {
 			return require(path)
 		},
+    openSecretDownloadForm() {
+      this.$store.state.secretDownloadForm = true
+    }
 	}
 }
 </script>

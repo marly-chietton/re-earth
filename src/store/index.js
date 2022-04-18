@@ -63,6 +63,9 @@ export default new Vuex.Store({
         title: "local dj",
         path: "./assets/R001.png",
       }
-    }
+    },
+    files: "./.zip",
+    password: "e43f=.!e:,d",
+    secretDownloadForm: false,
 	}
 });

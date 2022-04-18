@@ -47,6 +47,7 @@
         <Merch v-show="showMerchPage()"></Merch>
       </div>
     </div>
+    <DownloadWav></DownloadWav>
   </div>
 </template>
 
@@ -56,6 +57,7 @@ import Home from '@/components/Home.vue'
 import Content from '@/components/Content.vue'
 import Merch from '@/components/Merch.vue'
 import Stream from '@/components/Stream.vue'
+import DownloadWav from '@/components/forms/DownloadWav.vue'
 import * as animationData from '../../assets/animations/data.json';
 
 
@@ -67,6 +69,7 @@ export default {
     Merch,
     Stream,
     Home,
+    DownloadWav,
   },
   data() {
     return {
