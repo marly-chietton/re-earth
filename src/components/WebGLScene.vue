@@ -8,7 +8,7 @@
       webkit-playsinline
       x5-playsinline
       preload="auto"
-      muted
+      autoplay
       style="display: none;"
     ></video>
   </div>
@@ -140,18 +140,24 @@ const init = () => {
       raycaster = new THREE.Raycaster()
       mouse = new THREE.Vector2()
       
-      // Initialize video
+      // Initialize video with sound
       if (video.value) {
         video.value.load() // Force video load
-        video.value.play().catch(error => {
-          console.log("Video play failed:", error)
-          // Try to play with user interaction
-          const playVideo = () => {
-            video.value.play().catch(console.error)
-          }
-          document.addEventListener('touchstart', playVideo, { once: true })
-          document.addEventListener('click', playVideo, { once: true })
-        })
+        video.value.muted = false // Ensure video is not muted
+        video.value.volume = 1.0 // Set volume to maximum
+        
+        // Try to play with sound
+        const playVideo = () => {
+          video.value.play().catch(error => {
+            console.log("Video play failed:", error)
+            // If autoplay fails, try to play on any user interaction
+            document.addEventListener('touchstart', () => video.value.play().catch(console.error), { once: true })
+            document.addEventListener('click', () => video.value.play().catch(console.error), { once: true })
+          })
+        }
+        
+        // Try to play immediately
+        playVideo()
       }
       
       // Handle window resize
@@ -367,8 +373,6 @@ const animate = () => {
           child.material.color = new THREE.Color(1.2, 1.2, 1.2) // Brighten the video
         }
       })
-      // Unmute video on hover (do this once, not for each face)
-      video.value.muted = false
     }
   } else {
     if (isHovered) {
@@ -380,8 +384,6 @@ const animate = () => {
           child.material.color = new THREE.Color(1, 1, 1) // Reset to normal
         }
       })
-      // Mute video when not hovering (do this once, not for each face)
-      video.value.muted = true
     }
   }
   
