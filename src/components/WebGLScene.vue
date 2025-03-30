@@ -152,6 +152,11 @@ const init = () => {
       window.addEventListener('mouseup', onMouseUp)
       window.addEventListener('wheel', onMouseWheel)
       
+      // Add touch event listeners
+      window.addEventListener('touchstart', onTouchStart, { passive: false })
+      window.addEventListener('touchmove', onTouchMove, { passive: false })
+      window.addEventListener('touchend', onTouchEnd)
+      
       // Start animation loop
       animate()
     })
@@ -238,6 +243,65 @@ const onMouseWheel = (event) => {
   if (newDistance >= minDistance && newDistance <= maxDistance) {
     targetCameraDistance = newDistance
   }
+}
+
+// Handle touch start
+const onTouchStart = (event) => {
+  event.preventDefault() // Prevent scrolling while interacting
+  if (event.touches.length === 1) {
+    isDragging = true
+    previousMousePosition = {
+      x: event.touches[0].clientX,
+      y: event.touches[0].clientY
+    }
+  }
+}
+
+// Handle touch move
+const onTouchMove = (event) => {
+  event.preventDefault() // Prevent scrolling while interacting
+  if (event.touches.length === 1) {
+    const touch = event.touches[0]
+    mouse.x = (touch.clientX / window.innerWidth) * 2 - 1
+    mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1
+    
+    const deltaMove = {
+      x: touch.clientX - previousMousePosition.x,
+      y: touch.clientY - previousMousePosition.y
+    }
+    
+    // Calculate new camera position
+    const currentPosition = camera.position.clone()
+    const target = new THREE.Vector3(0, 0, 0)
+    
+    // Rotate around Y axis
+    const angleY = deltaMove.x * 0.01
+    currentPosition.applyAxisAngle(new THREE.Vector3(0, 1, 0), angleY)
+    
+    // Rotate around X axis (with limits)
+    const angleX = deltaMove.y * 0.01
+    const currentAngleX = Math.atan2(currentPosition.y, currentPosition.z)
+    const newAngleX = currentAngleX - angleX
+    
+    // Limit vertical rotation to prevent flipping
+    if (newAngleX > -Math.PI / 2 && newAngleX < Math.PI / 2) {
+      currentPosition.applyAxisAngle(new THREE.Vector3(1, 0, 0), -angleX)
+    }
+    
+    // Update camera position and look at target
+    camera.position.copy(currentPosition)
+    camera.lookAt(target)
+    
+    previousMousePosition = {
+      x: touch.clientX,
+      y: touch.clientY
+    }
+  }
+}
+
+// Handle touch end
+const onTouchEnd = () => {
+  isDragging = false
 }
 
 // Animation loop
@@ -365,6 +429,9 @@ const cleanup = () => {
   window.removeEventListener('mousedown', onMouseDown)
   window.removeEventListener('mouseup', onMouseUp)
   window.removeEventListener('wheel', onMouseWheel)
+  window.removeEventListener('touchstart', onTouchStart)
+  window.removeEventListener('touchmove', onTouchMove)
+  window.removeEventListener('touchend', onTouchEnd)
   if (video.value) {
     video.value.pause()
     video.value.src = ''
