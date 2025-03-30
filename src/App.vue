@@ -1,20 +1,19 @@
-<template>
-	<div id="app" style="height: 100vh;">
-		<router-view></router-view>
-	</div>
-</template>
-
-<script>
-export default {
-  name: 'App',
-}
+<script setup lang="ts">
+import WebGLScene from './components/WebGLScene.vue'
 </script>
 
-<style>
-@import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
-/* Order is important */
-@import '../node_modules/bulma/css/bulma.css';
-/* Order is important */
-@import '../css/mystyles.css';
+<template>
+  <WebGLScene />
+</template>
 
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+}
 </style>

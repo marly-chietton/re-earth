@@ -1,34 +1,5 @@
-# re-earth
+# Vue 3 + TypeScript + Vite
 
-> re-earth website
+This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-# utils
-Si le port se superposent avec nginx (80) il faut stop nginx et kill les PID.
-C'est bien le docker qui porte la conf nginx donc docker s'occupe de rediriger le flux via les ports (80:80 443:443)
-
-Pour kill PID nginx :
-Simple search for linux utility using following command
-
-netstat -nlp | grep 8888
-It'll show processing running at this port, then kill that process using PID (look for a PID in row) of that process.
-
-kill PID
-
+Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
