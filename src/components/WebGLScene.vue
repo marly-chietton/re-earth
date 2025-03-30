@@ -5,6 +5,10 @@
       src="/src/assets/300325.mp4"
       loop
       playsinline
+      webkit-playsinline
+      x5-playsinline
+      preload="auto"
+      muted
       style="display: none;"
     ></video>
   </div>
@@ -45,10 +49,11 @@ const init = () => {
   // Create renderer first (needed for PMREM)
   renderer = new THREE.WebGLRenderer({ 
     antialias: true,
-    alpha: true
+    alpha: true,
+    powerPreference: "high-performance"
   })
   renderer.setSize(window.innerWidth, window.innerHeight)
-  renderer.setPixelRatio(window.devicePixelRatio)
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)) // Limit pixel ratio for better performance
   renderer.toneMapping = THREE.ACESFilmicToneMapping
   renderer.toneMappingExposure = 1
   container.value.appendChild(renderer.domElement)
@@ -135,9 +140,19 @@ const init = () => {
       raycaster = new THREE.Raycaster()
       mouse = new THREE.Vector2()
       
-      // Start playing the video (muted initially)
-      video.value.muted = true
-      video.value.play()
+      // Initialize video
+      if (video.value) {
+        video.value.load() // Force video load
+        video.value.play().catch(error => {
+          console.log("Video play failed:", error)
+          // Try to play with user interaction
+          const playVideo = () => {
+            video.value.play().catch(console.error)
+          }
+          document.addEventListener('touchstart', playVideo, { once: true })
+          document.addEventListener('click', playVideo, { once: true })
+        })
+      }
       
       // Handle window resize
       window.addEventListener('resize', onWindowResize)
@@ -253,6 +268,11 @@ const onTouchStart = (event) => {
     previousMousePosition = {
       x: event.touches[0].clientX,
       y: event.touches[0].clientY
+    }
+    
+    // Try to play video on first touch
+    if (video.value && video.value.paused) {
+      video.value.play().catch(console.error)
     }
   }
 }
